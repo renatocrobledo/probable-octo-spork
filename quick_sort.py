@@ -1,45 +1,33 @@
-'''
-// Create an array to sort
-var array = [9, 2, 5, 6, 4, 3, 7, 10, 1, 12, 8, 11];
 
-// Basic implementation (pivot is the first element of the array)
-function quicksort(array) {
-    if (array.length == 0) return [];
 
-    var left = [], right = [], pivot = array[0];
+def partition(array, left, right, pivot):
+  while left <= right:
 
-    for (var i = 1; i < array.length; i++) {
-        if(array[i] < pivot)
-            left.push(array[i])
-        else
-            right.push(array[i]);
-    }
-
-    return quicksort(left).concat(pivot, quicksort(right));
-}
-
-console.log(quicksort(array.slice())); // => [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
-
-'''
-
-def quick_sort_mutation(array, left, right):
-    
-    pivot_index = int((left + right) /2)
-
-    while left <= right:
-
-      while array[left] < array[pivot_index]:
+      while array[left] < pivot:
         left += 1
     
-      while array[right] > array[pivot_index]:
+      while array[right] > pivot:
         right -= 1
 
-      if array[left] > array[right]:
+      if left <= right:
         array[left], array[right] = array[right], array[left]
+        left += 1
+        right -= 1
 
-    quick_sort_mutation(array, 0, pivot_index)
-    quick_sort_mutation(array, pivot_index, len(array) - 1)
+  return left
 
+def quick_sort_mutation(array, left, right):
+
+    if left >= right:
+      return
+
+    pivot_index = int((left + right) /2)
+    pivot = array[pivot_index]
+
+    main_index = partition(array, left, right, pivot)
+
+    quick_sort_mutation(array, left, main_index - 1)
+    quick_sort_mutation(array, main_index, right)
 
 
 def quick_sort(array):
@@ -62,14 +50,22 @@ def quick_sort(array):
   return quick_sort(left) + [pivot] + quick_sort(right)
   
 def test():
+  
   A = [6, 3, 17, 11, 4, 44, 76, 23, 12, 30]
-  result = quick_sort(A) #(the list, the index of the first element of the list, the index of the pivot)
+  result = quick_sort(A) 
   assert result == [3, 4, 6, 11, 12, 17, 23, 30, 44, 76], result
+
+  A = [1,1,1,1,0,0,0,0]
+  result = quick_sort(A) 
+  assert result == [0,1], result
+
 
   B = [6, 3, 17, 11, 4, 44, 76, 23, 12, 30]
   quick_sort_mutation(B, 0, len(B) - 1)
   assert B == [3, 4, 6, 11, 12, 17, 23, 30, 44, 76], B
 
-
+  B = [1,1,1,1,0,0,0,0]
+  result = quick_sort(B) 
+  assert result == [0,1], result
 
 test()
