@@ -48,11 +48,11 @@ class Queue:
   def generate_binary_up_to(self, n):
     
     for i in range(n):
+      current_value = i + 1
       # transform to binary and removes the '0b' character at the beginning
-      binary = str(bin(i))[2:]
+      binary = str(bin(current_value))[2:]
       self.enqueue(binary) 
       
-
 
 def test():
 
@@ -62,12 +62,10 @@ def test():
 
   assert q.container == [3, 2, 1, 4, 5, 6, 7, 8, 9], q.container
 
-
-
   q = Queue()
   q.generate_binary_up_to(10)
   
-  assert q.container == ['0', '1', '10', '11', '100', '101', '110', '111', '1000', '1001'], q.container
+  assert q.container == ['1', '10', '11', '100', '101', '110', '111', '1000', '1001', '1010'], q.container
 
 
 test()
