@@ -49,24 +49,22 @@ def get_fibonacci_at_position_non_recursive(n):
     a, b = b, a + b
   return b
 
-def test():
   
-  result = get_fibonacci_at_position(5)
-  assert result == 8, result
+result = get_fibonacci_at_position(5)
+assert result == 8, result
 
-  result = get_fibonacci_at_position(11)
-  assert result == 144, result
+result = get_fibonacci_at_position(11)
+assert result == 144, result
 
-  result = get_fibonacci_at_position_non_recursive(5)
-  assert result == 8, result
+result = get_fibonacci_at_position_non_recursive(5)
+assert result == 8, result
 
-  result = get_fibonacci_at_position_non_recursive(11)
-  assert result == 144, result
+result = get_fibonacci_at_position_non_recursive(11)
+assert result == 144, result
 
-  result = get_fibonacci_list(6)
-  assert result == ['1', '1', '2', '3', '5', '8'], result
+result = get_fibonacci_list(6)
+assert result == ['1', '1', '2', '3', '5', '8'], result
 
-  result = get_fibonacci_list(12)
-  assert result == ['1', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144'], result
+result = get_fibonacci_list(12)
+assert result == ['1', '1', '2', '3', '5', '8', '13', '21', '34', '55', '89', '144'], result
 
-test()
