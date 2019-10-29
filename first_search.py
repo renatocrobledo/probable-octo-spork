@@ -3,7 +3,6 @@
 
 from collections import defaultdict
 
-
 class Graph:
 
   def __init__(self, graph = None):
@@ -104,7 +103,6 @@ def test_dfs():
 
   assert g.visited == [0,1,2,4,3], g.visited
 
-
   g = Graph({
     0: [1,3],
     1: [2],
@@ -114,8 +112,6 @@ def test_dfs():
   g.dfs(0)
 
   assert g.visited == [0,1,2,3], g.visited
-
-
 
 def test_bfs():
   
@@ -146,11 +142,6 @@ def test_bfs():
   g.bfs(2)
   
   assert g.visited == [2,0,3,1], g.visited
-
-
-
-
-
 
 test_graph_building()
 test_dfs()
