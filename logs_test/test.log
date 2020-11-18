@@ -1,0 +1,4 @@
+INFO:root:2020-10-17T14:43:38.883911 Running add with params (2, 4)
+INFO:root:2020-10-17T14:43:38.884112 Running mul with params (5, 4)
+INFO:root:2020-10-17T14:43:43.858825 Running add with params (2, 4)
+INFO:root:2020-10-17T14:43:43.858986 Running mul with params (5, 4)

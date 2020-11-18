@@ -1,5 +1,18 @@
+'''
+ Given pairs of logic comparations return the biggest..
 
-def action(elements):
+ for example:
+
+ in: 
+    ['a>b', 'c<a'] 
+    
+ out:
+   'a' 
+'''
+from collections import defaultdict
+
+
+def action_old(elements):
 
   e = {}
 
@@ -45,6 +58,30 @@ def action(elements):
 
   return " ".join(o)
 
+
+def action(logic_comparations):
+
+    dictionary = defaultdict(int)
+
+    for l in logic_comparations:
+        if '>' in l:
+            bigger, smaller = l.split('>')
+        else: 
+            smaller, bigger = l.split('<')
+
+        dictionary[smaller] -= 1
+        dictionary[bigger] += 1
+
+
+    value_bigger_than_zero = lambda o: o[1] > 0
+    get_value = lambda o: o[1]
+
+    s = filter(value_bigger_than_zero, dictionary.items())
+    r = sorted(s, key=get_value, reverse=True)
+
+    return " ".join(map(lambda o:o[0],r)) 
+
+
 response = action(['A>B', 'A>C'])
 assert response == 'A', response
 
@@ -55,4 +92,4 @@ response = action(['A>B', 'A>C', 'E>C', 'F>C', 'F<B'])
 assert response == 'A E', response
 
 response = action(['E<C', 'F<C', 'F<B', 'Z>J', 'J<B'])
-assert response == 'B C Z', response
+assert response == 'B C Z' or response == 'C B Z', response
