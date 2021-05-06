@@ -1,3 +1,3 @@
-from tests import test_cipher
+from tests.test_hufman_code import test_all
 
-test_cipher.test_all()
+test_all()

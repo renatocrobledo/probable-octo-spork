@@ -186,3 +186,12 @@ def go():
     #g.toggle_life(2,1)
 
     g.big_bang()
+
+
+g = Game(40)
+
+g.toggle_life(2,2)
+g.toggle_life(2,3)
+g.toggle_life(2,1)
+
+g.big_bang()
