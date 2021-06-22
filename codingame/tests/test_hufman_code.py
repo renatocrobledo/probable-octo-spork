@@ -2,7 +2,6 @@ from src import huffman_code
 from tests import mock_input
 
 
-
 def evaluate(entry, result):
     mock_input.inyect(entry, huffman_code.play, result)
 
